@@ -2,23 +2,76 @@
 #Parameters: None
 #Return: file name
 
+Def file_val():
+  validFileName = True
+  while validFileName:
+      try:
+          filename = input("Enter the name of the file to be read from: ")
+          file_object = open(filename, "r")
+          validFileName = False
+     except FileNotFoundError:
+          print("The file does not exist")
+  print( "Thank you.", filename, "is valid" )
+  return filename
 
-
+filename = file_val()
 
 #Function's purpose: Process the file
 #Parameters: file name of file to read from
 #Return: The maximum profit
 
-
+def process_file(filename):
+  max=0
+  for line in filename:
+    date, movie_name, budget, gross=filename.split(",")
+    profit= gross-budget
+    if max<profit :
+      max=profit
+      max_movie = movie_name
+      max_date = date
+    else:
+      continue
+  
+  max_profit_movie = "The movie with the most profit was: "+ max_movie +", with a profit of "+max+" and it was released "+max_date+".")
+  return max_profit_movie
 
 
 #Function's purpose: Process the file
 #Parameters: file name of file to read from, file name of file to write to
 #Return: None
 
+def file_out(filename_out):
+filefile = open(filename_out.txt, "a")
+  for line in filename:
+    date, movie_name, budget, gross=filename.split(",")
+    profit = gross-budget
+    filefile.write(date, movie_name, profit)
 
 
 
 #Function's purpose: main
 #Parameters: None
 #Return: None
+
+def main():
+  Def file_val():
+   validFileName = True
+   while validFileName:
+       try:
+            filename = input("Enter the name of the file to be read from: ")
+            file_object = open(filename, "r")
+            validFileName = False
+       except FileNotFoundError:
+           print("The file does not exist")
+   print( "Thank you.", filename, "is valid" )
+   return filename
+
+  filename = file_val()
+  max_profit_movie = process_file(filename)
+  print(max_profit_movie)
+  
+  filename_out=input("what would you like the name of the new profit file to be?: ")
+  file_out(filename_out)
+  
+  
+main()
